@@ -1,8 +1,9 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import './Modal.css'
 import { Rating } from "../Filter/RatingFilter/Rating"
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { SearchContext } from '../../contexts/SearchContext';
+
 
 function Modal () {
     const {
@@ -12,22 +13,22 @@ function Modal () {
         priceProduct,
         descriptionProduct
     } = useContext(SearchContext);
-
+    const [counter, setCounter] = useState(0);
     const setCloseModal = () => {
         setIsOpen(false)
     }
     
-    // var clicks = 0
+     //var clicks = 0
 
-    // function Adding() {
-    //     clicks += 1;
-    //     document.getElementById("clicks").innerHTML = clicks
-    // }
+    function Adding() {
+        setCounter(counter + 1);
+        //document.getElementById("clicks").innerHTML = clicks
+    }
 
-    // function Minus() {
-    //     clicks -= 1;
-    //     document.getElementById("clicks").innerHTML = clicks
-    // }
+    function Minus() {
+        setCounter(counter - 1);
+        //document.getElementById("clicks").innerHTML = clicks
+    }
     return (
         <div className='ModalContainer'>
             <div className='ContentModalContainer'>
@@ -43,9 +44,9 @@ function Modal () {
                     <Rating stars={3}/>
                     <h6>{descriptionProduct}</h6>
                     <div className="HeaderDetailModalContainer">
-                        <button type="button" onclick="">+</button>
-                        <p> <a id="clicks">0</a></p>
-                        <button type="button" onclick="">-</button>
+                        <button type="button" onClick={Adding}>+</button>
+                        <p> {counter}</p>
+                        <button type="button" onClick={Minus}>-</button>
                         <button>Add to Cart</button>
                     </div>
                 </div>
