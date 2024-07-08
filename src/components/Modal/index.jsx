@@ -19,16 +19,14 @@ function Modal () {
         setIsOpen(false)
     }
     
-     //var clicks = 0
-
     function Adding() {
         setCounter(counter + 1);
-        //document.getElementById("clicks").innerHTML = clicks
     }
 
     function Minus() {
-        setCounter(counter - 1);
-        //document.getElementById("clicks").innerHTML = clicks
+        if (counter >0 ){
+            setCounter(counter - 1);
+        }
     }
     return (
         <div className='ModalContainer'>
